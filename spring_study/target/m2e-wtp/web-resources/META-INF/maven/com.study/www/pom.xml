@@ -210,44 +210,44 @@
 	
 	<!-- scheduler 관련 -->
 		<!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz-jobs -->
-		<dependency>
+	<!-- 	<dependency>
 		    <groupId>org.quartz-scheduler</groupId>
 		    <artifactId>quartz-jobs</artifactId>
 		    <version>2.3.2</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
+		https://mvnrepository.com/artifact/org.quartz-scheduler/quartz
 		<dependency>
 		    <groupId>org.quartz-scheduler</groupId>
 		    <artifactId>quartz</artifactId>
 		    <version>2.3.2</version>
-		</dependency>
+		</dependency> -->
 		
 		<!-- security -->
 		<!-- core/web/config/taglib -->
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
-		<dependency>
+		<!-- <dependency>
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-core</artifactId>
 		    <version>5.5.3</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+		https://mvnrepository.com/artifact/org.springframework.security/spring-security-web
 		<dependency>
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-web</artifactId>
 		    <version>5.5.3</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+		https://mvnrepository.com/artifact/org.springframework.security/spring-security-config
 		<dependency>
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-config</artifactId>
 		    <version>5.5.3</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
+		https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs
 		<dependency>
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-taglibs</artifactId>
 		    <version>5.5.3</version>
-		</dependency>
+		</dependency> -->
 
 
 	</dependencies>

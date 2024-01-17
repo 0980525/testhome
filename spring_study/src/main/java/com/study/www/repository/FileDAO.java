@@ -1,8 +1,8 @@
-package repository;
+package com.study.www.repository;
 
 import java.util.List;
 
-import domain.FileVO;
+import com.study.www.domain.FileVO;
 
 public interface FileDAO {
 

@@ -1,23 +1,24 @@
-package service;
+package com.study.www.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import domain.BoardDTO;
-import domain.BoardVO;
-import domain.FileVO;
-import domain.PagingVO;
+import com.study.www.domain.BoardDTO;
+import com.study.www.domain.BoardVO;
+import com.study.www.domain.FileVO;
+import com.study.www.domain.PagingVO;
+import com.study.www.repository.BoardDAO;
+import com.study.www.repository.CommentDAO;
+import com.study.www.repository.FileDAO;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import repository.BoardDAO;
-import repository.CommentDAO;
-import repository.FileDAO;
 
-@Service
 @Slf4j
 @RequiredArgsConstructor
+@Service
 public class BoardServiceImpl implements BoardService{
 
 	private final BoardDAO bdao;

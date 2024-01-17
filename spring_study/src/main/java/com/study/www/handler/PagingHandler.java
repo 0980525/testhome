@@ -1,9 +1,10 @@
-package handler;
+package com.study.www.handler;
 
 import java.util.List;
 
-import domain.CommentVO;
-import domain.PagingVO;
+import com.study.www.domain.CommentVO;
+import com.study.www.domain.PagingVO;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

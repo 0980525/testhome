@@ -1,4 +1,4 @@
-package domain;
+package com.study.www.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package handler;
+package com.study.www.handler;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +11,8 @@ import org.apache.tika.Tika;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import domain.FileVO;
+import com.study.www.domain.FileVO;
+
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.name.ConsecutivelyNumberedFilenames;
 

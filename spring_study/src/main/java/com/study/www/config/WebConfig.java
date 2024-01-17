@@ -1,4 +1,4 @@
-package config;
+package com.study.www.config;
 
 import javax.servlet.Filter;
 import javax.servlet.MultipartConfigElement;

@@ -1,11 +1,11 @@
-package repository;
+package com.study.www.repository;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import domain.BoardVO;
-import domain.PagingVO;
+import com.study.www.domain.BoardVO;
+import com.study.www.domain.PagingVO;
 
 public interface BoardDAO {
 

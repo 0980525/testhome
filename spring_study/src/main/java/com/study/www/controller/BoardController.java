@@ -1,4 +1,4 @@
-package controller;
+package com.study.www.controller;
 
 import java.util.List;
 
@@ -16,20 +16,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import domain.BoardDTO;
-import domain.BoardVO;
-import domain.FileVO;
-import domain.PagingVO;
-import handler.FileHandler;
-import handler.PagingHandler;
+import com.study.www.domain.BoardDTO;
+import com.study.www.domain.BoardVO;
+import com.study.www.domain.FileVO;
+import com.study.www.domain.PagingVO;
+import com.study.www.handler.FileHandler;
+import com.study.www.handler.PagingHandler;
+import com.study.www.service.BoardService;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import service.BoardService;
 
-@Controller
+@Slf4j
 @RequestMapping("/board/*")
 @RequiredArgsConstructor
-@Slf4j
+@Controller
 public class BoardController {
 
 	private final BoardService bsv;
