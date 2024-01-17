@@ -6,7 +6,62 @@
 <jsp:include page="../layout/nav.jsp"></jsp:include>
 
 
+<h2>Board List Page</h2><br>
+	<!-- search line -->
+	<div class="col-sm-12 col-md-6">
+		<form action="/board/boardList" method="get">
+			<div class="input-group mb-3">
+				<c:set value="${ph.pgvo.type }" var="typed"></c:set>
+				<select class="form-select" name="type" id="inputGroupSelect01">
+					<option ${typed eq null ? 'selected' : '' }>선택</option>
+					<option value="t" ${typed eq 't' ? 'selected' : '' }>Title</option>
+					<option value="w" ${typed eq 'w' ? 'selected' : '' }>Writer</option>
+					<option value="c" ${typed eq 'c' ? 'selected' : '' }>Content</option>
+					<option value="tw" ${typed eq 'tw' ? 'selected' : '' }>Title & Writer</option>
+					<option value="tc" ${typed eq 'tc' ? 'selected' : '' }>Title & Content</option>
+					<option value="wc" ${typed eq 'wc' ? 'selected' : '' }>Writer & Content</option>
+					<option value="twc" ${typed eq 'twc' ? 'selected' : '' }>All</option>
+				</select> 
+				<input type="hidden" name="pageNo" value="1">
+				<input type="hidden" name="qty" value="${ph.pgvo.qty }">
+				<input type="search" class="form-control me-2" name="keyword" value="${ph.pgvo.keyword }" placeholder="Search...">
+				<button class="btn btn-outline-success" type="submit"> Search 
+					<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+						${ph.totalCount }
+						<span class="visually-hidden">unread messages</span>
+					</span>
+				</button>
+			</div>
+		</form>
+	</div>
 
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">title</th>
+				<th scope="col">writer</th>
+				<th scope="col">read Count</th>
+				<th scope="col">comment_qty</th>
+				<th scope="col">file_qty</th>
+				<th scope="col">Mod At</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${list }" var="bvo">
+				<tr>
+					<th scope="row">${bvo.bno}</th>
+					<td><a href="/board/boardDetail?bno=${bvo.bno}">${bvo.title}</a></td>
+					<td>${bvo.writer}</td>
+					<td>${bvo.readCount}</td>
+					<td>${bvo.cmtQty}</td>
+					<td>${bvo.hasFile}</td>
+					<td>${bvo.modAt}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+	
 
 
 <jsp:include page="../layout/footer.jsp"></jsp:include>

@@ -10,7 +10,7 @@
 <hr>
 <div class="container-md">
 	<!-- <sec:authentication property="principal.mvo.email" var="authEmail"/> -->
-	<form action="/board/register" method="post" enctype="multipart/form-data">
+	<form action="/board/boardRegister" method="post" enctype="multipart/form-data">
 		<div class="mb-3">
 			<label for="title" class="form-label">Title</label> 
 			<input
