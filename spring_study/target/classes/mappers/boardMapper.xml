@@ -22,7 +22,9 @@
 		where bno = #{bno}
 		
 	</update>
-	
+	<select id="selectOneBno" resultType="long">
+		select max(bno) from board
+	</select>
 	
 	
 </mapper>

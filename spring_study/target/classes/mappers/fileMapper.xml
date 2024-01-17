@@ -6,5 +6,8 @@
 	<select id="getFileList">
 		select * from file where bno = #{bno}
 	</select>
-
+	<insert id="insertFile">
+		insert into file (uuid, save_dir, file_name, file_type, bno, file_size)
+		values (#{uuid}, #{saveDir}, #{fileName}, #{fileType}, #{bno}, #{fileSize})
+	</insert>
 </mapper>
