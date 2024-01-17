@@ -37,9 +37,9 @@ public class BoardController {
 	
 	private final FileHandler fh;
 	
-	@GetMapping("/register")
+	@GetMapping("/boardRegister")
 	public void register() {}
-	@PostMapping("/register")
+	@PostMapping("/boardRegister")
 	public String insert(BoardVO bvo,
 			@RequestParam(name="files",required = false)MultipartFile[] files) {
 		List<FileVO> flist = null;
@@ -51,7 +51,7 @@ public class BoardController {
 		
 		return "index";
 	}
-	@GetMapping("/list")
+	@GetMapping("/boardList")
 	public void list(Model m,PagingVO pgvo) {
 		List<BoardVO> list = bsv.getList(pgvo);
 		int totalCount = bsv.getTotalCount(pgvo);
@@ -59,12 +59,12 @@ public class BoardController {
 		m.addAttribute("list",list);
 		m.addAttribute("ph",ph);
 	}
-	@GetMapping({"/detail", "/modify"})
+	@GetMapping({"/boardDetail", "/boardModify"})
 	public void detail(Model m, @RequestParam("bno") long bno) {
 		
 		m.addAttribute("bdto",bsv.getDetail(bno));
 	}
-	@PostMapping("/modify")
+	@PostMapping("/boardModify")
 	public String modify(BoardVO bvo,RedirectAttributes re,
 			@RequestParam(name="files",required= false)MultipartFile[]files) {
 		log.info(">>> modify >>>{}");
@@ -76,13 +76,13 @@ public class BoardController {
 		int isOk = bsv.update(new BoardDTO(bvo,flist));
 		re.addAttribute("bvo",bvo.getBno());
 		
-	return "redirect:/board/detail?bno="+bvo.getBno();
+	return "redirect:/board/boardDetail?bno="+bvo.getBno();
 	}
 	
 	@GetMapping("/remove")
 	public String remove (BoardVO bvo) {
 		bsv.remove(bvo);
-		return "redirect:/board/list";
+		return "redirect:/board/boardList";
 	}
 	
 	@DeleteMapping(value="/file/{uuid}", produces= MediaType.TEXT_PLAIN_VALUE)

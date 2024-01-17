@@ -15,7 +15,7 @@
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/board/list">게시판</a>
+          <a class="nav-link" href="/board/boardList">게시판</a>
         </li>
         
         <!-- 현재 인증한 사용자의 정보를 가져와서 해당 권한이 있는지 확인 -->
@@ -26,21 +26,24 @@
        		<sec:authentication property="principal.mvo.nickName" var="authNick"/>
        		<sec:authentication property="principal.mvo.authList" var="auths"/> -->
 	        <li class="nav-item">
-	          <a class="nav-link" href="/board/register">게시글 작성하기</a>
+	          <a class="nav-link" href="/board/boardRegister">게시글 작성하기</a>
 	        </li>
         	<c:choose>
         		<c:when test ="${auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">
 			        <li class="nav-item">
-			          <a class="nav-link" href="/member/list">회원리스트 ${authNick }(${authEmail }/ADMIN)</a>
+			          <a class="nav-link" href="/member/memberList">회원리스트 ${authNick }(${authEmail }/ADMIN)</a>
 			        </li>        		
         		</c:when>
         		<c:otherwise>
         			<li class="nav-item">
-			          <a class="nav-link" href="/member/modify">회원정보수정 ${authNick }</a>
+			          <a class="nav-link" href="/member/memberModify">회원정보수정 ${authNick }</a>
 			        </li>   
         		</c:otherwise>
         	</c:choose>
         
+	        <li class="nav-item">
+	          <a class="nav-link" href="/member/memberMyPage"> My Page </a>
+	        </li>        		
 	        <li class="nav-item">
 	          <a class="nav-link" href="" id="logoutLink">로그아웃</a>
 	        </li>
@@ -52,10 +55,10 @@
         
         <sec:authorize access="isAnonymous()"> -->
 	        <li class="nav-item">
-	          <a class="nav-link" href="/member/register">회원가입</a>
+	          <a class="nav-link" href="/member/memberRegister">회원가입</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="/member/login">로그인</a>
+	          <a class="nav-link" href="/member/memberLogin">로그인</a>
 	        </li>
       <!--   </sec:authorize> -->
       </ul>
