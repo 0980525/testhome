@@ -8,10 +8,13 @@
 		values(#{title},#{writer},#{content})
 	</insert>
 	<select id="getList" resultType="com.study.www.domain.BoardVO">
-		select * from board
+		select * from board 
+		<include refid="search"></include>
+		order by bno desc limit #{pageStart},#{qty}
 	</select>
 	<select id="getTotalCnt" resultType="int">
-		select count(bno) from board  
+		select count(bno) from board 
+		<include refid="search"></include> 
 	</select>
 	<select id="getDetail" resultType="com.study.www.domain.BoardVO">
 		select * from board where bno=#{bno}
@@ -22,9 +25,43 @@
 		where bno = #{bno}
 		
 	</update>
+	
+	<update id="update">
+		update board set 
+		title =#{title},
+		content =#{content},
+		mod_at = now(),
+		read_count = read_count -2
+		where bno = #{bno}
+	</update>
+	
 	<select id="selectOneBno" resultType="long">
 		select max(bno) from board
 	</select>
+	<delete id="delete">
+		delete from board where bno = #{bno}
+	</delete>
 	
 	
+	<sql id="search">
+		<if test="type != null">
+			<trim prefix="where(" suffix=")" prefixOverrides="or">
+				<foreach collection="typeToArray" item="type">
+					<trim prefix="or">
+						<choose>
+							<when test="type == 't'.toString()">
+								title like concat('%', #{keyword}, '%')
+							</when>
+							<when test="type == 'w'.toString()">
+								writer like concat('%', #{keyword}, '%')
+							</when>
+							<when test="type == 'c'.toString()">
+								content like concat('%', #{keyword}, '%')
+							</when>
+						</choose>
+					</trim>
+				</foreach>
+			</trim>
+		</if>
+	</sql>
 </mapper>

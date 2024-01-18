@@ -62,6 +62,25 @@
 		</tbody>
 	</table>
 	
+	<!-- 페이징 라인  -->
+	<nav aria-label="Page navigation example">
+		<ul class="pagination">
+			<li class="page-item ${(ph.prev eq false) ? 'disabled' : '' }">
+				<a class="page-link"
+				href="/board/boardList?pageNo=${ph.startPage-1 }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type }&keyword=${py.pgvo.keyword}"
+				aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+			</li>
+			<c:forEach begin="${ph.startPage }" end="${ph.endPage }" var="i">
+				<li class="page-item">
+					<a class="page-link" 
+					href="/board/boardList?pageNo=${i }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type }&keyword=${py.pgvo.keyword}">${i}</a>
+				</li>
+			</c:forEach>
+			<li class="page-item ${(ph.next eq false) ? 'disabled' : '' }">
+				<a class="page-link" href="/board/boardList?pageNo=${ph.endPage+1 }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type }&keyword=${py.pgvo.keyword}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+			</li>
+		</ul>
+	</nav>
 
 
 <jsp:include page="../layout/footer.jsp"></jsp:include>

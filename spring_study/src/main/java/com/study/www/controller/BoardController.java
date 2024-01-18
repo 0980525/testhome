@@ -53,6 +53,7 @@ public class BoardController {
 	}
 	@GetMapping("/boardList")
 	public void list(Model m,PagingVO pgvo) {
+		log.info("000000pgvo000000",pgvo);
 		List<BoardVO> list = bsv.getList(pgvo);
 		int totalCount = bsv.getTotalCount(pgvo);
 		PagingHandler ph = new PagingHandler(pgvo, totalCount);
@@ -73,7 +74,7 @@ public class BoardController {
 		if(files[0].getSize()>0) {
 			flist = fh.uploadFiles(files);
 		}
-		int isOk = bsv.update(new BoardDTO(bvo,flist));
+		int isOk = bsv.modify(new BoardDTO(bvo,flist));
 		re.addAttribute("bvo",bvo.getBno());
 		
 	return "redirect:/board/boardDetail?bno="+bvo.getBno();
@@ -82,15 +83,13 @@ public class BoardController {
 	@GetMapping("/remove")
 	public String remove (BoardVO bvo) {
 		bsv.remove(bvo);
+		bsv.removeFile(bvo.getBno());
 		return "redirect:/board/boardList";
 	}
-	
-	@DeleteMapping(value="/file/{uuid}", produces= MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> removeFile(@PathVariable("uuid") String uuid) {
-		log.info(">>> uuid {}", uuid);
-		int isOk = bsv.removeFile(uuid);
-		return isOk > 0 ?
-				new ResponseEntity<String>("1", HttpStatus.OK) :
-					new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR);
+	@DeleteMapping(value="/file/{uuid}",produces = MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> removeFile(@PathVariable("uuid")String uuid){
+		int isOk = bsv.modRemoveFile(uuid);
+		return isOk >0? new ResponseEntity<String>("1",HttpStatus.OK):
+			new ResponseEntity<String>("0",HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }

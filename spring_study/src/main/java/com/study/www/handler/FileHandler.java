@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.study.www.domain.FileVO;
 
 import lombok.extern.slf4j.Slf4j;
+import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.name.ConsecutivelyNumberedFilenames;
 
 @Component
@@ -32,7 +33,7 @@ public class FileHandler {
 		File folders = new File(UP_DIR,today);
 		
 		if(!folders.exists()) {
-			folders.mkdir();
+			folders.mkdirs();
 		}
 		for(MultipartFile file:files) {
 			FileVO fvo = new FileVO();
@@ -53,10 +54,16 @@ public class FileHandler {
 			
 			try {
 				file.transferTo(storeFile);
+				if(isImageFile(storeFile)) {
+					fvo.setFileType(1);
+					File thumbNail = new File(folders,uuidstr+"_th_"+fileName);
+					Thumbnails.of(storeFile).size(75, 75).toFile(thumbNail);
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 				log.info("파일 생성 오류");
 			}
+			log.info(">>>>>>>>>>fvo {}",fvo);
 			flist.add(fvo);
 			
 		}

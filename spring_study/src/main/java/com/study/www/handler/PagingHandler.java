@@ -27,12 +27,12 @@ public class PagingHandler {
 		this.endPage =(int)Math.ceil(pgvo.getPageNo() /(double)pgvo.getQty())*pgvo.getQty();
 		this.startPage = endPage - 9;
 		
-		int realEndPage = (int)Math.ceil(totalCount / (double)pgvo.getQty());
+		int realEndPage = (int)Math.ceil(totalCount/(double)pgvo.getQty());
 		
 		if(realEndPage < endPage) {
 			this.endPage = realEndPage;
 		}
-		this.prev = this.startPage >1;
+		this.prev = this.startPage > 1;
 		this.next = this.endPage < realEndPage;
 		
 	}

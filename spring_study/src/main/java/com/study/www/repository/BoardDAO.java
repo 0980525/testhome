@@ -21,4 +21,9 @@ public interface BoardDAO {
 
 	int updateReadCnt(@Param("bno")long bno,@Param("count")int count);
 
+	void delete(BoardVO bvo);
+
+	int update(BoardVO boardVO);
+
+
 }

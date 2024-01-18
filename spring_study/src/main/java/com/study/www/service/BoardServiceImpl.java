@@ -1,6 +1,5 @@
 package com.study.www.service;
 
-import java.io.File;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -44,12 +43,10 @@ public class BoardServiceImpl implements BoardService{
 	}
 	@Override
 	public List<BoardVO> getList(PagingVO pgvo) {
-		// TODO Auto-generated method stub
 		return bdao.getList(pgvo);
 	}
 	@Override
 	public int getTotalCount(PagingVO pgvo) {
-		// TODO Auto-generated method stub
 		return bdao.getTotalCnt(pgvo);
 	}
 	@Transactional
@@ -63,7 +60,7 @@ public class BoardServiceImpl implements BoardService{
 	}
 	@Transactional
 	@Override
-	public int update(BoardDTO bdto) {
+	public int modify(BoardDTO bdto) {
 		int isOk = bdao.updateReadCnt(bdto.getBvo().getBno(),-2);
 		if(bdto.getFlist() == null) {
 			return isOk;
@@ -75,17 +72,24 @@ public class BoardServiceImpl implements BoardService{
 				isOk += fdao.insertFile(fvo);
 			}
 		}
-		return isOk;
+		return bdao.update(bdto.getBvo());
 	}
 	@Override
 	public void remove(BoardVO bvo) {
-		// TODO Auto-generated method stub
+		bdao.delete(bvo);
+		
+		
 		
 	}
 	@Override
-	public int removeFile(String uuid) {
+	public int removeFile(long bno) {
 		// TODO Auto-generated method stub
-		return 0;
+		return fdao.delete(bno);
+	}
+	@Override
+	public int modRemoveFile(String uuid) {
+		// TODO Auto-generated method stub
+		return fdao.deleteMod(uuid);
 	}
 	
 }
