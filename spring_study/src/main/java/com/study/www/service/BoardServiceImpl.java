@@ -1,5 +1,6 @@
 package com.study.www.service;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -60,10 +61,21 @@ public class BoardServiceImpl implements BoardService{
 		BoardDTO bdto = new BoardDTO(bvo,flist);
 		return bdto;
 	}
+	@Transactional
 	@Override
-	public int update(BoardDTO boardDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int update(BoardDTO bdto) {
+		int isOk = bdao.updateReadCnt(bdto.getBvo().getBno(),-2);
+		if(bdto.getFlist() == null) {
+			return isOk;
+		}
+		
+		if(isOk > 0 && bdto.getFlist().size()>0) {
+			for(FileVO fvo : bdto.getFlist()) {
+				fvo.setBno(bdto.getBvo().getBno());
+				isOk += fdao.insertFile(fvo);
+			}
+		}
+		return isOk;
 	}
 	@Override
 	public void remove(BoardVO bvo) {
