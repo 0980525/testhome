@@ -47,13 +47,13 @@
 	        <li class="nav-item">
 	          <a class="nav-link" href="" id="logoutLink">로그아웃</a>
 	        </li>
-	        <form action="/member/logout" method="post" id="logoutForm">
 	        	<!-- 인증된(로그인한 계정의) 이메일 -->
+	        <form action="/member/logout" method="post" id="logoutForm">
 	        	<input type="hidden" name="email" value="${authEmail}">
 	        </form>
-        <!-- </sec:authorize>
+        <!-- </sec:authorize> -->
         
-        <sec:authorize access="isAnonymous()"> -->
+       <!-- <sec:authorize access="isAnonymous()"> -->
 	        <li class="nav-item">
 	          <a class="nav-link" href="/member/memberRegister">회원가입</a>
 	        </li>

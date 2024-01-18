@@ -73,7 +73,7 @@ public class BoardController {
 		if(files[0].getSize()>0) {
 			flist = fh.uploadFiles(files);
 		}
-		int isOk = bsv.update(new BoardDTO(bvo,flist));
+		int isOk = bsv.modify(new BoardDTO(bvo,flist));
 		re.addAttribute("bvo",bvo.getBno());
 		
 	return "redirect:/board/boardDetail?bno="+bvo.getBno();
