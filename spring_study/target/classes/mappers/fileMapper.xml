@@ -11,6 +11,9 @@
 		select * from file where bno = #{bno}
 	</select>
 	<delete id="delete">
+		delete from file where bno=#{bno}
+	</delete>
+	<delete id="deleteMod">
 		delete from file where uuid=#{uuid}
 	</delete>
 </mapper>

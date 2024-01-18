@@ -43,12 +43,10 @@ public class BoardServiceImpl implements BoardService{
 	}
 	@Override
 	public List<BoardVO> getList(PagingVO pgvo) {
-		// TODO Auto-generated method stub
 		return bdao.getList(pgvo);
 	}
 	@Override
 	public int getTotalCount(PagingVO pgvo) {
-		// TODO Auto-generated method stub
 		return bdao.getTotalCnt(pgvo);
 	}
 	@Transactional
@@ -84,9 +82,14 @@ public class BoardServiceImpl implements BoardService{
 		
 	}
 	@Override
-	public int removeFile(String uuid) {
+	public int removeFile(long bno) {
 		// TODO Auto-generated method stub
-		return fdao.delete(uuid);
+		return fdao.delete(bno);
+	}
+	@Override
+	public int modRemoveFile(String uuid) {
+		// TODO Auto-generated method stub
+		return fdao.deleteMod(uuid);
 	}
 	
 }

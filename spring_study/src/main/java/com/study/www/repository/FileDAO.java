@@ -2,7 +2,6 @@ package com.study.www.repository;
 
 import java.util.List;
 
-import com.study.www.domain.BoardVO;
 import com.study.www.domain.FileVO;
 
 public interface FileDAO {
@@ -11,7 +10,10 @@ public interface FileDAO {
 
 	List<FileVO> getFileList(long bno);
 
-	int delete(String uuid);
+	int delete(long bno);
+
+
+	int deleteMod(String uuid);
 
 
 }

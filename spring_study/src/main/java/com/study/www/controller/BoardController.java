@@ -83,15 +83,13 @@ public class BoardController {
 	@GetMapping("/remove")
 	public String remove (BoardVO bvo) {
 		bsv.remove(bvo);
+		bsv.removeFile(bvo.getBno());
 		return "redirect:/board/boardList";
 	}
-	
-	@DeleteMapping(value="/file/{uuid}", produces= MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> removeFile(@PathVariable("uuid") String uuid) {
-		log.info(">>> uuid {}", uuid);
-		int isOk = bsv.removeFile(uuid);
-		return isOk > 0 ?
-				new ResponseEntity<String>("1", HttpStatus.OK) :
-					new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR);
+	@DeleteMapping(value="/file/{uuid}",produces = MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> removeFile(@PathVariable("uuid")String uuid){
+		int isOk = bsv.modRemoveFile(uuid);
+		return isOk >0? new ResponseEntity<String>("1",HttpStatus.OK):
+			new ResponseEntity<String>("0",HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }

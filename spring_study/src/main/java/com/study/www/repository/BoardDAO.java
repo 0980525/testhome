@@ -25,6 +25,5 @@ public interface BoardDAO {
 
 	int update(BoardVO boardVO);
 
-	void register(BoardVO bvo);
 
 }
