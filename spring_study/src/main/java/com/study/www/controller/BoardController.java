@@ -53,6 +53,7 @@ public class BoardController {
 	}
 	@GetMapping("/boardList")
 	public void list(Model m,PagingVO pgvo) {
+		log.info("000000pgvo000000",pgvo);
 		List<BoardVO> list = bsv.getList(pgvo);
 		int totalCount = bsv.getTotalCount(pgvo);
 		PagingHandler ph = new PagingHandler(pgvo, totalCount);

@@ -10,7 +10,7 @@
 	<select id="getList" resultType="com.study.www.domain.BoardVO">
 		select * from board 
 		<include refid="search"></include>
-		order by bno desc 
+		order by bno desc limit #{pageStart},#{qty}
 	</select>
 	<select id="getTotalCnt" resultType="int">
 		select count(bno) from board 
@@ -41,6 +41,7 @@
 	<delete id="delete">
 		delete from board where bno = #{bno}
 	</delete>
+	
 	
 	<sql id="search">
 		<if test="type != null">

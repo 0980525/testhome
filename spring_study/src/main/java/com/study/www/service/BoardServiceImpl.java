@@ -1,6 +1,5 @@
 package com.study.www.service;
 
-import java.io.File;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -80,6 +79,8 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void remove(BoardVO bvo) {
 		bdao.delete(bvo);
+		
+		
 		
 	}
 	@Override
