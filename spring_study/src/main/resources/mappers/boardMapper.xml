@@ -8,7 +8,7 @@
 		values(#{title},#{writer},#{content})
 	</insert>
 	<select id="getList" resultType="com.study.www.domain.BoardVO">
-		select * from board
+		select * from board order by bno desc
 	</select>
 	<select id="getTotalCnt" resultType="int">
 		select count(bno) from board  

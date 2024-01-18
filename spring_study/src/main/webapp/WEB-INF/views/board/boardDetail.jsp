@@ -23,7 +23,7 @@
 	</div>
 	<div class="mb-3">
 		<label for="reg_date" class="form-label">작성일</label> 
-		<span class="badge text-bg-primary">${bvo.readCount }</span> 
+		<span class="badge text-bg-primary">조회수 : ${bvo.readCount }</span> 
 		<input type="text" name="reg_date" class="form-control" id="reg_date" readonly value="${bvo.regAt }">
 	</div>
 	<div class="mb-3">
