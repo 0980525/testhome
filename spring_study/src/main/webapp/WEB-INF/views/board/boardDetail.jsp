@@ -77,13 +77,61 @@
 	<a href="/board/boardList"><button type="submit" class="btn btn-primary">목록</button></a><br>
 	<br><hr><br>
 	
+	<!-- 댓글 등록 라인 -->
+<!--     <sec:authentication property="principal.mvo.email" var="authEmail"/> -->
+	<div class="input-group mb-3">
+		<span class="input-group-text" id="cmtWriter">${authEmail }</span> 
+		<input type="text" class="form-control" id="cmtText" aria-label="Amount (to the nearest dollar)">
+		<button type="button" class="btn btn-success" id="cmtPostBtn">Post</button>
+	</div>
+
+	<!-- 댓글 표시 라인 -->
+	<ul class="list-group list-group-flush" id="cmtListArea">
+		<li class="list-group-item">
+			<div class="mb-3">
+				<div class="fw-bold">Writer</div>
+				content
+			</div>
+			<span class="badge rounded-pill text-bg-warning">modAt</span>
+		</li>
+	</ul>
 	
+	<!-- 댓글 더보기 버튼 -->
+	<div>
+		<button type="button" id="moreBtn" data-page="1" class="btn btn-outline-dark" style="visibility:hidden">More+</button>
+	</div>
+	
+	<!-- 모달창 라인 -->
+	<div class="modal" id="myModal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Writer</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" id="cmtTextMod">
+						<button type="button" class="btn btn-primary" id="cmtModBtn">Post</button>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
 
 </div>
 
 
 
 
-
-
+<script type="text/javascript">
+	let bnoVal = `<c:out value="${bdto.bvo.bno}"/>`;
+	console.log(bnoVal);
+</script>
+<script src="../resources/js/boardComment.js"></script>
+<script type="text/javascript">
+	spreadCommentList(bnoVal);
+</script>
 <jsp:include page="../layout/footer.jsp"></jsp:include>

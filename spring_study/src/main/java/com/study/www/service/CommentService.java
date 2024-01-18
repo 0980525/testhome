@@ -1,12 +1,12 @@
-package com.study.www.repository;
+package com.study.www.service;
 
 import java.util.List;
 
 import com.study.www.domain.CommentVO;
 
-public interface CommentDAO {
+public interface CommentService {
 
-	int insert(CommentVO cvo);
+	int post(CommentVO cvo);
 
 	List<CommentVO> getList(long bno);
 
