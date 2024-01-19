@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.util.matcher.AnyRequestMatcher;
 
 import com.study.www.security.CustomAuthMemberService;
 import com.study.www.security.LoginFailureHandler;
@@ -35,6 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	public AuthenticationFailureHandler authFailureHandler() {
 		return new LoginFailureHandler();
 	}
+	@Bean
 	public UserDetailsService customUserService() {
 		return new CustomAuthMemberService();
 	}

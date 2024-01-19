@@ -9,7 +9,7 @@
 <!-- email, pwd, nick_name -->
 <div class="container my-3">
 	<h4 class="mb-3">Input Your Information</h4><br>
-	<form action="/member/login" method="post">
+	<form action="/member/memberLogin" method="post" >
 		<div class="mb-3">
 			<label for="e" class="form-label">email</label> 
 			<input type="email" name="email" class="form-control" id="e" placeholder="example@example.com">
