@@ -1,8 +1,9 @@
 package com.study.www.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,5 +43,7 @@ public class MemberController {
 		re.addAttribute("errMsg",request.getAttribute("errMsg"));
 		return "redirect:/member/memberLogin";
 	}
+//	리스트, 수정,삭제 
+	
 	
 }

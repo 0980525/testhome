@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 
 import com.study.www.security.CustomAuthMemberService;
 import com.study.www.security.LoginFailureHandler;
-import com.study.www.security.LogingSuccessHandler;
+import com.study.www.security.LoginSuccessHandler;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	}
 	@Bean
 	public AuthenticationSuccessHandler authSuccessHandler() {
-		return new LogingSuccessHandler();
+		return new LoginSuccessHandler();
 	}
 	@Bean
 	public AuthenticationFailureHandler authFailureHandler() {
@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.csrf().disable();
 		
 		http.authorizeRequests()
-		.antMatchers("/member/list").hasRole("ADMIN")
+		.antMatchers("/member/memberList").hasRole("ADMIN")
 		.antMatchers("/","/board/boardList","/board/boardDetail","/comment/**",
 				"/upload/**","/resources/**","/member/memberRegister",
 				"/member/memberLogin").permitAll()
