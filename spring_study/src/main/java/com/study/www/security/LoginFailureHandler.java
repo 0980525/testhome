@@ -27,10 +27,12 @@ public class LoginFailureHandler implements AuthenticationFailureHandler{
 	@Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException exception) throws IOException, ServletException {
+		
 		setAuthEmail(request.getParameter("email"));
+		
 		if(exception instanceof BadCredentialsException ||
 				exception instanceof InternalAuthenticationServiceException) {
-			setErrorMessage(exception.getMessage().toString());
+			setErrorMessage(exception.getMessage());
 		}
 		log.info("<<<<err Msg>>>>"+errorMessage);
 		

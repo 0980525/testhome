@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
@@ -38,7 +39,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 	private RedirectStrategy rdstg = new DefaultRedirectStrategy();
 	private RequestCache reqCache = new HttpSessionRequestCache();
 	
-	@Inject
+	@Autowired
 	private MemberService msv;
 	
 	@Override
@@ -51,7 +52,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		
 		HttpSession ses =  request.getSession();
 		
-		log.info("loginSuccess >> ses >>"+ses.toString());
+		log.info("loginSuccess >> ses >>{}"+ses);
 		
 		if(!isOk ||ses ==null) {
 			return;
