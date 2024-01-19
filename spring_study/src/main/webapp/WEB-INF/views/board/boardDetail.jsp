@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix ="sec" uri="http://www.springframework.org/security/tags" %>
 
 <jsp:include page="../layout/header.jsp"></jsp:include>
 <jsp:include page="../layout/nav.jsp"></jsp:include>
@@ -69,7 +70,7 @@
 				</c:forEach>
 			</ul>
 		</div>
-	
+	</div>
 	
 	
 	<a href="/board/boardModify?bno=${bvo.bno }"><button type="submit" class="btn btn-success">수정</button></a> 
@@ -78,9 +79,9 @@
 	<br><hr><br>
 	
 	<!-- 댓글 등록 라인 -->
-<!--     <sec:authentication property="principal.mvo.email" var="authEmail"/> -->
+    
 	<div class="input-group mb-3">
-		<span class="input-group-text" id="cmtWriter">${authEmail }</span> 
+		<span class="input-group-text" id="cmtWriter">Writer</span> 
 		<input type="text" class="form-control" id="cmtText" aria-label="Amount (to the nearest dollar)">
 		<button type="button" class="btn btn-success" id="cmtPostBtn">Post</button>
 	</div>

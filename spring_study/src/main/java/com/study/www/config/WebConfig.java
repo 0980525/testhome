@@ -12,7 +12,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class[] {RootConfig.class};
+		return new Class[] {RootConfig.class, SecurityConfig.class};
 	}
 
 	@Override
@@ -38,7 +38,8 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 
 	@Override
 	protected void customizeRegistration(Dynamic registration) {
-		String uploadLocation ="C:\\HS\\_myFiles\\_java\\_fileUpload";
+//		String uploadLocation ="C:\\HS\\_myFiles\\_java\\_fileUpload";
+		String uploadLocation ="D:\\_myProject\\_java\\_fileUpload";
 		int maxFileSize= 1024*1024*20;//20M
 		int maxReqSize = maxFileSize*2; //40M
 		int fileSizeThreshold = maxFileSize; //20M	

@@ -3,6 +3,7 @@ package com.study.www.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.study.www.domain.CommentVO;
 import com.study.www.repository.CommentDAO;
@@ -14,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class CommentServiceImpl implements CommentService{
 
-	private CommentDAO cdao;
+	private final CommentDAO cdao;
 
 	@Override
 	public int post(CommentVO cvo) {
@@ -22,6 +23,7 @@ public class CommentServiceImpl implements CommentService{
 		return cdao.insert(cvo);
 	}
 
+	@Transactional
 	@Override
 	public List<CommentVO> getList(long bno) {
 		log.info("<<<<<<get list bno>>>>>> <<<<<<>>>>>>{}",bno);
