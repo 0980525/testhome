@@ -11,5 +11,18 @@
 		select *from comment 
 		where bno=#{bno}
 		order by cno desc
+		limit #{pgvo.pageStart},#{pgvo.qty}
 	</select>
+	<select id="totalCount" resultType="int">
+		select count(bno) from comment
+	</select>
+	<update id="update">
+		update comment set 
+		content =#{content},
+		mod_at = now()
+		where cno = #{cno}
+	</update>
+	<delete id="delete">
+		delete from comment where cno = #{cno}
+	</delete>
 </mapper>

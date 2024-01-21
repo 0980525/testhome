@@ -31,15 +31,17 @@ public class RootConfig {
 	public DataSource dataSource() {
 		HikariConfig hikariConfig = new HikariConfig();
 		
-		/* 집에서 사용
+//		 집에서 사용
+		 hikariConfig.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
+		 hikariConfig.setJdbcUrl("jdbc:log4jdbc:mysql://localhost:3306/springtest");
+		 hikariConfig.setUsername("springUser"); 
+		 hikariConfig.setPassword("mysql");
+		 
+		/*
 		 * hikariConfig.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
-		 * hikariConfig.setJdbcUrl("jdbc:log4jdbc:mysql://localhost:3306/springtest");
-		 * hikariConfig.setUsername("springUser"); hikariConfig.setPassword("mysql");
+		 * hikariConfig.setJdbcUrl("jdbc:log4jdbc:mysql://localhost:3306/mywebdb");
+		 * hikariConfig.setUsername("mywebUser"); hikariConfig.setPassword("mysql");
 		 */
-		hikariConfig.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
-		hikariConfig.setJdbcUrl("jdbc:log4jdbc:mysql://localhost:3306/mywebdb");
-		hikariConfig.setUsername("mywebUser");
-		hikariConfig.setPassword("mysql");
 		
 		hikariConfig.setMaximumPoolSize(5); 
 		hikariConfig.setMinimumIdle(5); 

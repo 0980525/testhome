@@ -81,6 +81,7 @@
 	<!-- 댓글 등록 라인 -->
     
 	<div class="input-group mb-3">
+	
 		<span class="input-group-text" id="cmtWriter">Writer</span> 
 		<input type="text" class="form-control" id="cmtText" aria-label="Amount (to the nearest dollar)">
 		<button type="button" class="btn btn-success" id="cmtPostBtn">Post</button>
@@ -90,10 +91,13 @@
 	<ul class="list-group list-group-flush" id="cmtListArea">
 		<li class="list-group-item">
 			<div class="mb-3">
-				<div class="fw-bold">Writer</div>
+				<div class="fw-bold">
+				Writer
+				<span class="badge rounded-pill text-bg-warning">modAt</span>
+				</div>
 				content
+				
 			</div>
-			<span class="badge rounded-pill text-bg-warning">modAt</span>
 		</li>
 	</ul>
 	

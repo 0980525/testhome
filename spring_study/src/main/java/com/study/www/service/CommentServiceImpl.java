@@ -5,7 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.study.www.domain.BoardVO;
 import com.study.www.domain.CommentVO;
+import com.study.www.domain.PagingVO;
+import com.study.www.handler.PagingHandler;
 import com.study.www.repository.CommentDAO;
 
 import lombok.RequiredArgsConstructor;
@@ -25,8 +28,23 @@ public class CommentServiceImpl implements CommentService{
 
 	@Transactional
 	@Override
-	public List<CommentVO> getList(long bno) {
+	public PagingHandler getList(long bno, PagingVO pgvo) {
+		List<CommentVO> list = cdao.getList(bno,pgvo);
+		int cmtCount = cdao.totalCount(bno);
+		PagingHandler ph = new PagingHandler(pgvo, cmtCount,list);
 		log.info("<<<<<<get list bno>>>>>> <<<<<<>>>>>>{}",bno);
-		return cdao.getList(bno);
+		return ph;
+	}
+
+	@Override
+	public int modify(CommentVO cvo) {
+		// TODO Auto-generated method stub
+		return cdao.update(cvo);
+	}
+
+	@Override
+	public int remove(long cno) {
+		// TODO Auto-generated method stub
+		return cdao.delete(cno);
 	}
 }

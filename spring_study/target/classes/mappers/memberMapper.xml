@@ -23,4 +23,19 @@
 	<insert id="insertAuthInit">
 		insert into auth_member values(#{email},'ROLE_USER')
 	</insert>
+	<select id="selectAllList" resultType="com.study.www.security.MemberVO">
+		select * from member
+	</select>
+	<update id="modifyPwdEmpty">
+		update member set nick_name = #{nickName} where email = #{email}
+	</update>
+	<update id="modify">
+		update member set pwd = #{pwd}, nick_name = #{nickName} where email = #{email}
+	</update>
+	<delete id="removeAuth">
+		delete from auth_member where email = #{email}
+	</delete>
+	<delete id="remove">
+		delete from member where email = #{email}
+	</delete>
 </mapper>
