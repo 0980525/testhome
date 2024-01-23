@@ -67,5 +67,13 @@ public class MemberServiceImpl implements MemberService{
 		return mdao.remove(email);
 	}
 
+	@Override
+	public MemberVO detail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
 
 }

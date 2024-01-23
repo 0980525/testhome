@@ -20,4 +20,5 @@ public interface MemberService {
 
 	int remove(String email);
 
+
 }

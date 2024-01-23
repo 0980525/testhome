@@ -1,6 +1,7 @@
 package com.study.www.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -56,6 +57,7 @@ public class MemberController {
 	@GetMapping("/memberList")
 	public void list(Model m) {
 		m.addAttribute("list",msv.getList());
+		log.info("<< memberList >>");
 	}
 	
 	@GetMapping("/memberModify")
@@ -91,6 +93,6 @@ public class MemberController {
 		new SecurityContextLogoutHandler().logout(req, res, authentication);
 	}
 	
-	public void 
+	
 	
 }

@@ -27,4 +27,5 @@ public interface MemberDAO {
 
 	int remove(String email);
 
+
 }

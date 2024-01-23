@@ -77,9 +77,6 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void remove(BoardVO bvo) {
 		bdao.delete(bvo);
-		
-		
-		
 	}
 	@Override
 	public int removeFile(long bno) {

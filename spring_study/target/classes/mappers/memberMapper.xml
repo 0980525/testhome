@@ -38,4 +38,6 @@
 	<delete id="remove">
 		delete from member where email = #{email}
 	</delete>
+	
+	
 </mapper>

@@ -9,7 +9,7 @@
 <div class="container my-3">
 	<sec:authorize access="isAuthenticated()">
 		<sec:authentication property="principal.mvo.email" var="authEmail"/>
-       	<sec:authentication property="principal.mvo.pwd" var="authPwd"/>
+       
        	<sec:authentication property="principal.mvo.nickName" var="authNick"/>
 		<form action="/member/memberModify" method="post">
 			<div class="mb-3">
@@ -18,7 +18,7 @@
 			</div>
 			<div class="mb-3">
 				<label for="p" class="form-label">password</label> 
-				<input type="password" name="pwd" class="form-control" id="p" value="${authPwd }">
+				<input type="password" name="pwd" class="form-control" id="p" >
 			</div>
 			<div class="mb-3">
 				<label for="n" class="form-label">nick_name</label> 
