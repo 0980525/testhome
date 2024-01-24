@@ -39,7 +39,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 	private RedirectStrategy rdstg = new DefaultRedirectStrategy();
 	private RequestCache reqCache = new HttpSessionRequestCache();
 	
-	@Autowired
+	@Inject
 	private MemberService msv;
 	
 	@Override
@@ -52,7 +52,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		
 		HttpSession ses =  request.getSession();
 		
-		log.info("loginSuccess >> ses >>{}"+ses);
+		log.info("loginSuccess >> ses >>{}"+ses.toString());
 		
 		if(!isOk ||ses ==null) {
 			return;

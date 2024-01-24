@@ -48,7 +48,6 @@ public class MemberController {
 	public String login(HttpServletRequest request, RedirectAttributes re) {
 		
 		re.addAttribute("email",request.getAttribute("email"));
-		log.info("email>>>> {}",request.getAttribute("email"));
 		re.addAttribute("errMsg",request.getAttribute("errMsg"));
 		return "redirect:/member/memberLogin";
 	}
@@ -57,7 +56,7 @@ public class MemberController {
 	@GetMapping("/memberList")
 	public void list(Model m) {
 		m.addAttribute("list",msv.getList());
-		log.info("<< memberList >>");
+		log.info("<< memberList01 >>");
 	}
 	
 	@GetMapping("/memberModify")
